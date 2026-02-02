@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom"; // Remove BrowserRouter
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
@@ -25,21 +25,20 @@ function App() {
   );
 
   return (
-    <Router>
-      <Routes>
-        {/* Public Route */}
-        <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
+    // No <Router> tag here! main.jsx handles it.
+    <Routes>
+      {/* Public Route */}
+      <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
 
-        {/* Protected Route */}
-        <Route 
-          path="/dashboard" 
-          element={user ? <Dashboard /> : <Navigate to="/login" />} 
-        />
+      {/* Protected Route */}
+      <Route 
+        path="/dashboard" 
+        element={user ? <Dashboard /> : <Navigate to="/login" />} 
+      />
 
-        {/* Default Redirect */}
-        <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
-      </Routes>
-    </Router>
+      {/* Default Redirect */}
+      <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
+    </Routes>
   );
 }
 
