@@ -20,7 +20,7 @@ const Login = () => {
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Welcome!</h1>
-          <p className="py-6">Sign in to access your PoC dashboard.</p>
+          <p className="py-6">Sign in to access your Coupons</p>
           <button onClick={handleLogin} className="btn btn-primary">
             Sign in with Google
           </button>
